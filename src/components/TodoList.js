@@ -20,7 +20,7 @@ const TodoList = ({ todos, deleteTodo }) => (
         <ListItemSecondaryAction>
           <IconButton
             aria-label="Delete"
-            onClick={listClick}
+            onClick={listClick({ index, deleteTodo })}
           >
             <DeleteIcon />
           </IconButton>
