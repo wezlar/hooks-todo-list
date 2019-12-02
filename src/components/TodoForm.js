@@ -1,21 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
-
-// const formSubmit = (event) => (saveTodo) => {
-//   console.log({ event, saveTodo })
-//   event.preventDefault();
-//   saveTodo(value)
-// }
 
 const TodoForm = ({ saveTodo }) => {
   const [value, setValue] = useState('');
 
+  const formSubmit = ({ value }) => (event) => {
+    event.preventDefault();
+    saveTodo(value);
+    setValue('');
+  }
+
   return <form
-      onSubmit={(event) => {
-        // TODO move this function out of inline and up above
-        event.preventDefault();
-        saveTodo(value);
-      }}
+      onSubmit={formSubmit({ value })}
     >
     <TextField
       variant="outlined"
